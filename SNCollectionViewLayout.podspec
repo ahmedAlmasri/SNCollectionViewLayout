@@ -9,8 +9,11 @@
 Pod::Spec.new do |s|
   s.name             = 'SNCollectionViewLayout'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of SNCollectionViewLayout.'
-
+  s.swift_version    = '4.2'
+  s.summary          = 'SNCollectionViewLayout for iOS apps'
+  s.description      = <<-DESC
+  Extracts the text from the Docx files and converts them into a valuable object that can be used
+  DESC
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
 #   * Try to keep it short, snappy and to the point.
@@ -28,7 +31,7 @@ TODO: Add long description of the pod here.
   s.source           = { :git => 'https://github.com/ahmedAlmasri/SNCollectionViewLayout.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '11.0'
 
   s.source_files = 'SNCollectionViewLayout/Classes/**/*'
   

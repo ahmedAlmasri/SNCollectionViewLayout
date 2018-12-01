@@ -1,0 +1,22 @@
+{
+  "name": "SNCollectionViewLayout",
+  "version": "0.1.0",
+  "summary": "A short description of SNCollectionViewLayout.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/ahmedAlmasri/SNCollectionViewLayout",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "ahmedAlmasri": "ahmed.almasri@ymail.com"
+  },
+  "source": {
+    "git": "https://github.com/ahmedAlmasri/SNCollectionViewLayout.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "SNCollectionViewLayout/Classes/**/*"
+}

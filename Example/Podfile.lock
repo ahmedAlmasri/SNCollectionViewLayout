@@ -1,0 +1,16 @@
+PODS:
+  - SNCollectionViewLayout (0.1.0)
+
+DEPENDENCIES:
+  - SNCollectionViewLayout (from `../`)
+
+EXTERNAL SOURCES:
+  SNCollectionViewLayout:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  SNCollectionViewLayout: 620400a65f7130e96efd9d8b89a3f817bed047dc
+
+PODFILE CHECKSUM: 63cbdbdecc3985c429785a2c6113b5bcd1cdcb6a
+
+COCOAPODS: 1.5.3

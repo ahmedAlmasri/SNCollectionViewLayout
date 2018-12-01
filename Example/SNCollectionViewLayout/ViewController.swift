@@ -7,11 +7,12 @@
 //
 
 import UIKit
-
+import SNCollectionViewLayout
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let l = SNCollectionViewLayout()
         // Do any additional setup after loading the view, typically from a nib.
     }
 
