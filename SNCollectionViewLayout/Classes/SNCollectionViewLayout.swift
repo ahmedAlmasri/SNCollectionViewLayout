@@ -20,13 +20,13 @@
 
 import UIKit
 
-protocol SNCollectionViewLayoutDelegate: class {
+public protocol SNCollectionViewLayoutDelegate: class {
     func scaleForItem(inCollectionView collectionView: UICollectionView, withLayout layout: UICollectionViewLayout, atIndexPath indexPath: IndexPath) -> UInt
     func itemFlexibleDimension(inCollectionView collectionView: UICollectionView, withLayout layout: UICollectionViewLayout, fixedDimension: CGFloat) -> CGFloat
     func headerFlexibleDimension(inCollectionView collectionView: UICollectionView, withLayout layout: UICollectionViewLayout, fixedDimension: CGFloat) -> CGFloat
 }
 
-extension SNCollectionViewLayoutDelegate {
+public extension SNCollectionViewLayoutDelegate {
     func scaleForItem(inCollectionView collectionView: UICollectionView, withLayout layout: UICollectionViewLayout, atIndexPath indexPath: IndexPath) -> UInt {
         return 1
     }
@@ -40,19 +40,19 @@ extension SNCollectionViewLayoutDelegate {
     }
 }
 
-class SNCollectionViewLayout: UICollectionViewLayout {
-    override var collectionViewContentSize: CGSize {
+open class SNCollectionViewLayout: UICollectionViewLayout, SNCollectionViewLayoutDelegate {
+    override open var collectionViewContentSize: CGSize {
         return CGSize(width: contentWidth, height: contentHeight)
     }
     
     // User-configurable 'knobs'
-    var scrollDirection: UICollectionView.ScrollDirection = .vertical
+    public var scrollDirection: UICollectionView.ScrollDirection = .vertical
     
     // Spacing between items
-    var itemSpacing: CGFloat = 0
+    public var itemSpacing: CGFloat = 0
     
     // Prevent the user from giving an invalid fixedDivisionCount
-    var fixedDivisionCount: UInt {
+    public var fixedDivisionCount: UInt {
         get {
             return UInt(intFixedDivisionCount)
         }
@@ -61,7 +61,7 @@ class SNCollectionViewLayout: UICollectionViewLayout {
         }
     }
     
-    weak var delegate: SNCollectionViewLayoutDelegate!
+    weak public var delegate: SNCollectionViewLayoutDelegate?
     
     /// Backing variable for fixedDivisionCount, is an Int since indices don't like UInt
     private var intFixedDivisionCount = 1
@@ -84,7 +84,8 @@ class SNCollectionViewLayout: UICollectionViewLayout {
     private typealias ItemFrame = (section: Int, flexibleIndex: Int, fixedIndex: Int, scale: Int)
     
     // MARK: - UICollectionView Layout
-    override func prepare() {
+    override open func prepare() {
+        
         // On rotation, UICollectionView sometimes calls prepare without calling invalidateLayout
         guard itemAttributesCache.isEmpty, headerAttributesCache.isEmpty, let collectionView = collectionView else { return }
         
@@ -98,10 +99,10 @@ class SNCollectionViewLayout: UICollectionViewLayout {
         }
         
         var additionalSectionSpacing: CGFloat = 0
-        let headerFlexibleDimension = (delegate).headerFlexibleDimension(inCollectionView: collectionView, withLayout: self, fixedDimension: fixedDimension)
+        let headerFlexibleDimension = (delegate ?? self).headerFlexibleDimension(inCollectionView: collectionView, withLayout: self, fixedDimension: fixedDimension)
         
         itemFixedDimension = (fixedDimension - (CGFloat(fixedDivisionCount) * itemSpacing) + itemSpacing) / CGFloat(fixedDivisionCount)
-        itemFlexibleDimension = (delegate).itemFlexibleDimension(inCollectionView: collectionView, withLayout: self, fixedDimension: itemFixedDimension)
+        itemFlexibleDimension = (delegate ?? self).itemFlexibleDimension(inCollectionView: collectionView, withLayout: self, fixedDimension: itemFixedDimension)
         
         for section in 0 ..< collectionView.numberOfSections {
             let itemCount = collectionView.numberOfItems(inSection: section)
@@ -175,7 +176,7 @@ class SNCollectionViewLayout: UICollectionViewLayout {
         sectionedItemGrid = [] // Only used during prepare, free up some memory
     }
     
-    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+    override open func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         let headerAttributes = headerAttributesCache.filter {
             $0.frame.intersects(rect)
         }
@@ -186,13 +187,13 @@ class SNCollectionViewLayout: UICollectionViewLayout {
         return headerAttributes + itemAttributes
     }
     
-    override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+    override open func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         return itemAttributesCache.first {
             $0.indexPath == indexPath
         }
     }
     
-    override func layoutAttributesForSupplementaryView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+    override open func layoutAttributesForSupplementaryView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         guard elementKind == UICollectionView.elementKindSectionHeader else { return nil }
         
         return headerAttributesCache.first {
@@ -200,7 +201,7 @@ class SNCollectionViewLayout: UICollectionViewLayout {
         }
     }
     
-    override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
+    override open func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
         if scrollDirection == .vertical, let oldWidth = collectionView?.bounds.width {
             return oldWidth != newBounds.width
         } else if scrollDirection == .horizontal, let oldHeight = collectionView?.bounds.height {
@@ -210,7 +211,7 @@ class SNCollectionViewLayout: UICollectionViewLayout {
         return false
     }
     
-    override func invalidateLayout() {
+    override open func invalidateLayout() {
         super.invalidateLayout()
         
         itemAttributesCache = []
@@ -221,7 +222,7 @@ class SNCollectionViewLayout: UICollectionViewLayout {
     
     // MARK: - Private
     private func indexableScale(forItemAt indexPath: IndexPath) -> Int {
-        var itemScale = (delegate).scaleForItem(inCollectionView: collectionView!, withLayout: self, atIndexPath: indexPath)
+        var itemScale = (delegate ?? self).scaleForItem(inCollectionView: collectionView!, withLayout: self, atIndexPath: indexPath)
         if itemScale > fixedDivisionCount {
             itemScale = fixedDivisionCount
         }
