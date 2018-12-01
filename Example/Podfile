@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'SNCollectionViewLayout_Example' do
+  pod 'SNCollectionViewLayout', :path => '../'
+
+  target 'SNCollectionViewLayout_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
