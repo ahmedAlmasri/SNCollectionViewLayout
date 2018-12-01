@@ -48,7 +48,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath) as! MyCell
-        cell.myLabel.backgroundColor = UIColor.yellow
+        cell.myLabel.backgroundColor = getRandomColor() 
         cell.myLabel.text = "index : \(indexPath.row)"
         return cell 
     }
