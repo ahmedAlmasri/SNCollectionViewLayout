@@ -5,6 +5,12 @@
 [![License](https://img.shields.io/cocoapods/l/SNCollectionViewLayout.svg?style=flat)](https://cocoapods.org/pods/SNCollectionViewLayout)
 [![Platform](https://img.shields.io/cocoapods/p/SNCollectionViewLayout.svg?style=flat)](https://cocoapods.org/pods/SNCollectionViewLayout)
 
+
+<b>ScreenShots</b>
+
+<img src="https://github.com/ahmedAlmasri/SNCollectionViewLayout/blob/master/screenshot/img1.png"  width="450">
+
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
