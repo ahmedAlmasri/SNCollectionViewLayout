@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SNCollectionViewLayout'
-  s.version          = '0.1.0'
+  s.version          = '1.0.0'
   s.swift_version    = '4.2'
   s.summary          = 'SNCollectionViewLayout for iOS apps'
   s.description      = <<-DESC

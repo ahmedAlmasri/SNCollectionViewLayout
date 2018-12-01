@@ -22,12 +22,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let gridLayout = SNCollectionViewLayout()
-        gridLayout.fixedDivisionCount = 4 // Columns for .vertical, rows for .horizontal
-         gridLayout.delegate = self
-        myCollectionView.collectionViewLayout = gridLayout
-        
-        // Do any additional setup after loading the view, typically from a nib.
+        let snCollectionViewLayout = SNCollectionViewLayout()
+        snCollectionViewLayout.fixedDivisionCount = 4 // Columns for .vertical, rows for .horizontal
+        snCollectionViewLayout.delegate = self
+        myCollectionView.collectionViewLayout = snCollectionViewLayout
     }
     
     
@@ -64,7 +62,7 @@ extension ViewController: SNCollectionViewLayoutDelegate {
         return 1
     }
     
-   
+    
     
     
 }
