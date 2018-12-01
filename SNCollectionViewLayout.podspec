@@ -8,11 +8,11 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SNCollectionViewLayout'
-  s.version          = '1.0.0'
+  s.version          = '1.0.1'
   s.swift_version    = '4.2'
-  s.summary          = 'SNCollectionViewLayout for iOS apps'
+  s.summary          = 'SNCollectionViewLayout for iOS apps Implement dynamic flow layout '
   s.description      = <<-DESC
-  Extracts the text from the Docx files and converts them into a valuable object that can be used
+         Implement dynamic flow layout 
   DESC
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
