@@ -10,9 +10,9 @@ Pod::Spec.new do |s|
   s.name             = 'SNCollectionViewLayout'
   s.version          = '1.0.1'
   s.swift_version    = '4.2'
-  s.summary          = 'SNCollectionViewLayout for iOS apps Implement dynamic flow layout '
+  s.summary          = 'Implement dynamic flow layout '
   s.description      = <<-DESC
-         Implement dynamic flow layout 
+         Collection View Layouts is a set of custom flow layouts for iOS which imitate general data grid approaches for mobile apps.
   DESC
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
