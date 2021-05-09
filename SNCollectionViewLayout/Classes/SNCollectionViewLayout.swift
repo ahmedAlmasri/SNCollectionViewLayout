@@ -20,26 +20,6 @@
 
 import UIKit
 
-public protocol SNCollectionViewLayoutDelegate: class {
-    func scaleForItem(inCollectionView collectionView: UICollectionView, withLayout layout: UICollectionViewLayout, atIndexPath indexPath: IndexPath) -> UInt
-    func itemFlexibleDimension(inCollectionView collectionView: UICollectionView, withLayout layout: UICollectionViewLayout, fixedDimension: CGFloat) -> CGFloat
-    func headerFlexibleDimension(inCollectionView collectionView: UICollectionView, withLayout layout: UICollectionViewLayout, fixedDimension: CGFloat) -> CGFloat
-}
-
-public extension SNCollectionViewLayoutDelegate {
-    func scaleForItem(inCollectionView collectionView: UICollectionView, withLayout layout: UICollectionViewLayout, atIndexPath indexPath: IndexPath) -> UInt {
-        return 1
-    }
-    
-    func itemFlexibleDimension(inCollectionView collectionView: UICollectionView, withLayout layout: UICollectionViewLayout, fixedDimension: CGFloat) -> CGFloat {
-        return fixedDimension
-    }
-    
-    func headerFlexibleDimension(inCollectionView collectionView: UICollectionView, withLayout layout: UICollectionViewLayout, fixedDimension: CGFloat) -> CGFloat {
-        return 0
-    }
-}
-
 open class SNCollectionViewLayout: UICollectionViewLayout, SNCollectionViewLayoutDelegate {
     override open var collectionViewContentSize: CGSize {
         return CGSize(width: contentWidth, height: contentHeight)

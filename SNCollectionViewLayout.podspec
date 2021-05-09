@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SNCollectionViewLayout'
-  s.version          = '1.0.1'
-  s.swift_version    = '4.2'
+  s.version          = '1.0.2'
+  s.swift_version    = '5.2'
   s.summary          = 'Implement dynamic flow layout '
   s.description      = <<-DESC
          Collection View Layouts is a set of custom flow layouts for iOS which imitate general data grid approaches for mobile apps.
@@ -31,7 +31,7 @@ TODO: Add long description of the pod here.
   s.source           = { :git => 'https://github.com/ahmedAlmasri/SNCollectionViewLayout.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '11.0'
+  s.ios.deployment_target = '13.0'
 
   s.source_files = 'SNCollectionViewLayout/Classes/**/*'
   
